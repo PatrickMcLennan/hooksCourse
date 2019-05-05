@@ -1,6 +1,8 @@
-import React, { useRef } from 'react';
+import React, { useRef, createContext } from 'react';
 import ToggleHook from './Toggle/ToggleHook';
 import { useTitleInput } from './hooks/useTitleInput';
+
+export const UserContext = createContext();
 
 const App = () => {
   ///////////////// GENERAL FORMULA
@@ -9,23 +11,25 @@ const App = () => {
   const ref = useRef();
 
   return (
-    <div className="main-wrapper" ref={ref}>
-      <h1
-        onClick={() =>
-          console.log(ref.current.classList.add('new-fake-class'))
-        }>
-        Level Up Dishes
-      </h1>
-      <ToggleHook />
-      <form onSubmit={e => e.preventDefault()}>
-        <input
-          type="text"
-          onChange={({ target: { value } }) => setName(value)}
-          value={name}
-        />
-        <button>Submit</button>
-      </form>
-    </div>
+    <UserContext.Provider value={{ user: false }}>
+      <div className="main-wrapper" ref={ref}>
+        <h1
+          onClick={() =>
+            console.log(ref.current.classList.add('new-fake-class'))
+          }>
+          Level Up Dishes
+        </h1>
+        <ToggleHook />
+        <form onSubmit={e => e.preventDefault()}>
+          <input
+            type="text"
+            onChange={({ target: { value } }) => setName(value)}
+            value={name}
+          />
+          <button>Submit</button>
+        </form>
+      </div>
+    </UserContext.Provider>
   );
 };
 
