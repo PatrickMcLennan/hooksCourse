@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import ToggleHook from './Toggle/ToggleHook';
 
 const App = () => {
   ///////////////// GENERAL FORMULA
@@ -14,6 +15,7 @@ const App = () => {
         onChange={({ target: { value } }) => setName(value)}
         value={name}
       />
+      <ToggleHook />
     </div>
   );
 };
