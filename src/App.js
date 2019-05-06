@@ -1,6 +1,7 @@
 import React, { useRef, createContext } from 'react';
 import ToggleHook from './Toggle/ToggleHook';
 import { useTitleInput } from './hooks/useTitleInput';
+import Counter from './Counter/Counter';
 
 export const UserContext = createContext();
 
@@ -20,6 +21,7 @@ const App = () => {
           Level Up Dishes
         </h1>
         <ToggleHook />
+        <Counter />
         <form onSubmit={e => e.preventDefault()}>
           <input
             type="text"
